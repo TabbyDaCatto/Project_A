@@ -1,0 +1,21 @@
+using UnityEngine;
+
+public class DestroyOnCameraView : MonoBehaviour
+{
+  public float destroyThreshold = 30.0f; // Distance at which enemy is destroyed
+
+  void Update()
+  {
+    // Get the main camera
+    Camera mainCamera = Camera.main;
+
+    // Calculate distance between enemy and camera
+    float distance = Vector3.Distance(transform.position, mainCamera.transform.position);
+
+    // Check if camera is close enough
+    if (distance <= destroyThreshold)
+    {
+      Destroy(gameObject); // Destroy the entire enemy GameObject
+    }
+  }
+}
